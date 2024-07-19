@@ -67,7 +67,7 @@ function AppAppBar({ mode, toggleColorMode }) {
         >
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
             <Sitemark />
-            <Box sx={{ display: 'flex' }}>
+            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               <Button
                 variant="text"
                 color="info"
@@ -113,18 +113,47 @@ function AppAppBar({ mode, toggleColorMode }) {
           </Box>
           <Box
             sx={{
-              display: 'flex',
+              display: { xs: 'none', md: 'flex' },
               gap: 0.5,
               alignItems: 'center',
             }}
           >
             <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
-            <Button color="primary" variant="text" size="small">
-              Sign in
-            </Button>
-            <Button color="primary" variant="contained" size="small">
-              Sign up
-            </Button>
+           </Box>
+          <Box sx={{ display: { sm: 'flex', md: 'none' } }}>
+            <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
+              <MenuIcon />
+            </IconButton>
+            <Drawer anchor="top" open={open} onClose={toggleDrawer(false)}>
+              <Box sx={{ p: 2, backgroundColor: 'background.default' }}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
+                  <IconButton onClick={toggleDrawer(false)}>
+                    <CloseRoundedIcon />
+                  </IconButton>
+                </Box>
+                <Divider sx={{ my: 3 }} />
+                <MenuItem onClick={() => scrollToSection('features')}>
+                  Features
+                </MenuItem>
+                <MenuItem onClick={() => scrollToSection('testimonials')}>
+                  Testimonials
+                </MenuItem>
+                <MenuItem onClick={() => scrollToSection('highlights')}>
+                  Highlights
+                </MenuItem>
+                <MenuItem onClick={() => scrollToSection('pricing')}>
+                  Pricing
+                </MenuItem>
+                <MenuItem onClick={() => scrollToSection('faq')}>FAQ</MenuItem>
+              </Box>
+            </Drawer>
           </Box>
         </Toolbar>
       </Container>

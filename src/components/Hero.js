@@ -2,138 +2,93 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import InputLabel from '@mui/material/InputLabel';
-import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-
-import { visuallyHidden } from '@mui/utils';
+import winsonCreature from './images/winsonCreature-Photoroom (1).png';
 import { styled } from '@mui/material/styles';
 
-const StyledBox = styled('div')(({ theme }) => ({
-  alignSelf: 'center',
+const StyledBox = styled(Box)(({ theme }) => ({
   width: '100%',
-  height: 400,
-  marginTop: theme.spacing(8),
-  borderRadius: theme.shape.borderRadius,
-  outline: '1px solid',
-  boxShadow: '0 0 12px 8px hsla(220, 25%, 80%, 0.2)',
-  backgroundImage: `url(${'/static/images/templates/templates-images/hero-light.png'})`,
-  outlineColor: 'hsla(220, 25%, 80%, 0.5)',
-  backgroundSize: 'cover',
-  [theme.breakpoints.up('sm')]: {
-    marginTop: theme.spacing(10),
-    height: 700,
+  backgroundImage:
+    'radial-gradient(ellipse 80% 50% at 50% -20%, hsl(210, 100%, 90%), transparent)',
+  [theme.breakpoints.up('md')]: {
+    height: '100vh',
+    display: 'flex',
+    alignItems: 'center',
   },
-  ...theme.applyStyles('dark', {
-    boxShadow: '0 0 24px 12px hsla(210, 100%, 25%, 0.2)',
-    backgroundImage: `url(${'/static/images/templates/templates-images/hero-dark.png'})`,
-    outlineColor: 'hsla(210, 100%, 80%, 0.1)',
-  }),
+  [theme.breakpoints.down('md')]: {
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
+  },
+}));
+
+const ProfileImage = styled('img')(({ theme }) => ({
+  width: '100%',
+  maxWidth: 300,
+  height: 'auto',
+  borderRadius: '50%',
+  boxShadow: '0 20px 20px rgba(0, 0, 0, 0.1)',
+  border: '5px solid white', // Add a white border
+  transition: 'transform 0.3s ease-in-out',
+  '&:hover': {
+    transform: 'scale(1.05)', // Add a slight zoom effect on hover
+  },
 }));
 
 export default function Hero() {
   return (
-    <Box
-      id="hero"
-      sx={(theme) => ({
-        width: '100%',
-        backgroundRepeat: 'no-repeat',
-        backgroundImage:
-          'radial-gradient(ellipse 80% 50% at 50% -20%, hsl(210, 100%, 90%), transparent)',
-        ...theme.applyStyles('dark', {
-          backgroundImage:
-            'radial-gradient(ellipse 80% 50% at 50% -20%, hsl(210, 100%, 16%), transparent)',
-        }),
-      })}
-    >
-      <Container
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          pt: { xs: 14, sm: 20 },
-          pb: { xs: 8, sm: 12 },
-        }}
-      >
-        <Stack
-          spacing={2}
-          useFlexGap
-          sx={{ alignItems: 'center', width: { xs: '100%', sm: '70%' } }}
-        >
-          <Typography
-            variant="h1"
-            sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column', sm: 'row' },
-              alignItems: 'center',
-              fontSize: 'clamp(3rem, 10vw, 3.5rem)',
-            }}
-          >
-            Our&nbsp;latest&nbsp;
-            <Typography
-              component="span"
-              variant="h1"
-              sx={(theme) => ({
-                fontSize: 'inherit',
-                color: 'primary.main',
-                ...theme.applyStyles('dark', {
-                  color: 'primary.light',
-                }),
-              })}
-            >
-              products
-            </Typography>
-          </Typography>
-          <Typography
-            sx={{
-              textAlign: 'center',
-              color: 'text.secondary',
-              width: { sm: '100%', md: '80%' },
-            }}
-          >
-            Explore our cutting-edge dashboard, delivering high-quality solutions
-            tailored to your needs. Elevate your experience with top-tier features
-            and services.
-          </Typography>
-          <Stack
-            direction={{ xs: 'column', sm: 'row' }}
-            spacing={1}
-            useFlexGap
-            sx={{ pt: 2, width: { xs: '100%', sm: 'auto' } }}
-          >
-            <InputLabel htmlFor="email-hero" sx={visuallyHidden}>
-              Email
-            </InputLabel>
-            <TextField
-              id="email-hero"
-              hiddenLabel
-              size="small"
-              variant="outlined"
-              aria-label="Enter your email address"
-              placeholder="Your email address"
-              slotProps={{
-                htmlInput: {
-                  autoComplete: 'off',
-                  'aria-label': 'Enter your email address',
-                },
-              }}
-            />
-            <Button variant="contained" color="primary">
-              Start now
-            </Button>
-          </Stack>
-          <Typography variant="caption" sx={{ textAlign: 'center' }}>
-            By clicking &quot;Start now&quot; you agree to our&nbsp;
-            <Link href="#" color="primary">
-              Terms & Conditions
-            </Link>
-            .
-          </Typography>
-        </Stack>
-        <StyledBox id="image" />
+    <StyledBox id="hero">
+      <Container sx={{
+        borderRadius: '20px',
+        padding: '20px',
+      }}>
+        <Grid container spacing={4} alignItems="center">
+          <Grid item xs={12} md={5} 
+            // align profile image to center
+            sx={{ 
+              textAlign: { xs: 'center', md: 'left' }, 
+              display: 'flex', 
+              justifyContent: { xs: 'center', md: 'flex-end' },
+              pr: { md: 4 }
+              }}>
+            <ProfileImage src={winsonCreature} alt="Winson Creature" />
+          </Grid>
+          <Grid item xs={12} md={7}>
+            <Stack spacing={2} sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+              <Typography
+                variant="h1"
+                sx={{
+                  fontSize: { xs: '2.5rem', md: '3.5rem' },
+                  fontWeight: 'bold',
+                  color: 'primary.main',
+                }}
+              >
+                Winson Yu
+              </Typography>
+              <Typography variant="h4" color="text.secondary">
+                Software Developer
+              </Typography>
+              <Typography variant="body1" sx={{ maxWidth: 600 }}>
+                CS / Statistics: ML Track at UC Davis. Growing passion
+                for artificial intelligence and machine learning.
+              </Typography>
+              <Stack
+                direction={{ xs: 'column', sm: 'row' }}
+                spacing={2}
+                sx={{ pt: 2, justifyContent: { xs: 'center', md: 'flex-start' } }}
+              >
+                <Button variant="contained" color="primary" size="large">
+                  View Portfolio
+                </Button>
+                <Button variant="outlined" color="primary" size="large">
+                  Contact Me
+                </Button>
+              </Stack>
+            </Stack>
+          </Grid>
+        </Grid>
       </Container>
-    </Box>
+    </StyledBox>
   );
 }
