@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.js": "/my-portfolio/static/js/main.cba8b7e2.js",
+    "main.js": "/my-portfolio/static/js/main.bb6c0475.js",
+    "static/media/winsonCreature-Photoroom (1).png": "/my-portfolio/static/media/winsonCreature-Photoroom (1).58e85c36a622de609545.png",
     "index.html": "/my-portfolio/index.html",
-    "main.cba8b7e2.js.map": "/my-portfolio/static/js/main.cba8b7e2.js.map"
+    "main.bb6c0475.js.map": "/my-portfolio/static/js/main.bb6c0475.js.map"
   },
   "entrypoints": [
-    "static/js/main.cba8b7e2.js"
+    "static/js/main.bb6c0475.js"
   ]
 }
